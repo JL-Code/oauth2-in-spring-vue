@@ -10,6 +10,11 @@ import { useRoute } from "vue-router";
 import { userManager } from "../UserManager";
 
 const route = useRoute();
+
+userManager.events.addUserSignedIn(() => {
+  alert("用户登录成功");
+});
+
 onMounted(() => {
   // console.log("route query", route.query);
   userManager.signinCallback(window.location.href);

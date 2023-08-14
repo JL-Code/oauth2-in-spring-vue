@@ -1,25 +1,24 @@
 import { UserManager, UserManagerSettings } from "oidc-client-ts";
 
 const OidcConfig: UserManagerSettings = {
-    authority: "/", // "http://localhost:9000",
-    client_id: "public-client",
-    redirect_uri: "http://127.0.0.1:4200/auth/callback",
-    scope: "openid", // 'openid profile ' + your scopes
-    post_logout_redirect_uri: "http://127.0.0.1:4200",
-    response_type: "code",
-    // response_mode: "fragment",
-    // silentRenew: true,
-    // silentRenewUrl: window.location.origin + '/silent-renew.html',
-    // renewTimeBeforeTokenExpiresInSeconds: 10,
-    automaticSilentRenew: false,
-    // loadUserInfo: true,
-  };
-  
- export const userManager = new UserManager(OidcConfig);
+  authority: "/", // "http://localhost:9000",
+  client_id: "public-client",
+  redirect_uri: "http://127.0.0.1:4200/auth/callback",
+  scope: "openid", // 'openid profile ' + your scopes
+  post_logout_redirect_uri: "http://127.0.0.1:4200",
+  response_type: "code",
+  // response_mode: "fragment",
+  // silentRenew: true,
+  // silentRenewUrl: window.location.origin + '/silent-renew.html',
+  // renewTimeBeforeTokenExpiresInSeconds: 10,
+  automaticSilentRenew: false,
+  monitorSession: true,
+  loadUserInfo: true,
+};
 
- 
+export const userManager = new UserManager(OidcConfig);
+
 const url = window.location.origin;
-
 
 export const oauth2Login = async () => {
   clearToken();
