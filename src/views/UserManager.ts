@@ -18,11 +18,28 @@ const OidcConfig: UserManagerSettings = {
 
 export const userManager = new UserManager(OidcConfig);
 
+// 注册事件
+userManager.events.removeUserLoaded(() => {
+  alert("removeUserLoaded 注销成功");
+});
+
+userManager.events.removeUserUnloaded(() => {
+  alert("removeUserUnloaded 注销成功");
+});
+
+userManager.events.removeUserSignedOut(()=>{
+  alert("removeUserSignedOut 注销成功");
+})
+
 const url = window.location.origin;
 
 export const oauth2Login = async () => {
   clearToken();
   await userManager.signinRedirect();
+};
+
+export const oauth2Logout = async () => {
+  await userManager.signoutRedirect();
 };
 
 export const refreshToken = async (loginPath: string) => {
