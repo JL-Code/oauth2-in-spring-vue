@@ -19,6 +19,11 @@ const router = createRouter({
       component: () => import("../views/PKCE.vue"),
     },
     {
+      path: "/userinfo",
+      name: "userinfo",
+      component: () => import("../views/UserInfo.vue"),
+    },
+    {
       path: "/auth",
       name: "auth",
       children: [
