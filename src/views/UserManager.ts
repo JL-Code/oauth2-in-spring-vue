@@ -1,4 +1,8 @@
-import { UserManager, UserManagerSettings } from "oidc-client-ts";
+import {
+  UserManager,
+  UserManagerSettings,
+  WebStorageStateStore,
+} from "oidc-client-ts";
 
 const OidcConfig: UserManagerSettings = {
   authority: "/", // "http://localhost:9000",
@@ -14,6 +18,7 @@ const OidcConfig: UserManagerSettings = {
   automaticSilentRenew: false,
   monitorSession: true,
   loadUserInfo: true,
+  userStore: new WebStorageStateStore({ store: window.localStorage }),
 };
 
 export const userManager = new UserManager(OidcConfig);
@@ -27,9 +32,9 @@ userManager.events.removeUserUnloaded(() => {
   alert("removeUserUnloaded 注销成功");
 });
 
-userManager.events.removeUserSignedOut(()=>{
+userManager.events.removeUserSignedOut(() => {
   alert("removeUserSignedOut 注销成功");
-})
+});
 
 const url = window.location.origin;
 

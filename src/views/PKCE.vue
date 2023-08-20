@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>PKCE + Authorization Code Flow</h1>
-    <button type="button" @click="oauth2Login">PKCE oauth2Login</button>
-    <button type="button" @click="oauth2Logout">PKCE oauth2Logout</button>
+    <el-button type="button" @click="oauth2Login">PKCE oauth2Login</el-button>
+    <el-button type="button" @click="oauth2Logout">PKCE oauth2Logout</el-button>
   </div>
 </template>
 

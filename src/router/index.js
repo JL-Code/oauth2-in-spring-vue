@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/FBView.vue"),
+      component: () => import("../views/PKCE.vue"),
     },
     {
       path: "/google",
